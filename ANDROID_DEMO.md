@@ -1,6 +1,14 @@
 # BeatFlow Demo para Android
 
-O APK de depuração da versão 0.1.3-demo abre em paisagem como **BeatFlow Demo · Violão**.
+O APK de depuração da versão 0.1.4-demo abre em paisagem como **BeatFlow Demo · Roda**.
+
+## Roda de violão
+
+Abra **RODA DE VIOLÃO** e experimente deslizar por duas ou mais cordas para cima ou para baixo. Cada corda soa na ordem em que o dedo passa por ela. A área inteira aceita o gesto. No computador, clique e arraste.
+
+Toque em **INICIAR**. São três frases em 20 segundos, a 72 BPM. Em cada frase, a banda demonstra por quatro tempos. Nos quatro seguintes, repita a batida enquanto o baixo e a percussão seguem tocando. O indicador **OUÇA** ou **SUA VEZ** mostra quem está tocando. A banda toca uma virada curta quando você acerta todas as batidas da frase e mantém as pausas.
+
+O acompanhamento e a virada foram sintetizados para esta demo. As quatro cordas usam as notas Sol, Si, Ré e Sol.
 
 ## Testar violão
 
