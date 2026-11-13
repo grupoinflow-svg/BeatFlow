@@ -1,6 +1,8 @@
 # BeatFlow Demo para Android
 
-O APK de depuração da versão 0.1.1-demo abre em paisagem como **BeatFlow Demo · Vertical**. Em **Play**, selecione **BeatFlow Demo** e escolha **Easy**, **Medium**, **Hard** ou **Expert**. Toque em **START** para começar. As notas descem pelas cinco colunas. Quando uma nota chega à linha de acerto, toque no botão da mesma coluna ou use A, S, D, F e G no teclado. **Retry** volta à tela de início da mesma faixa.
+O APK de depuração da versão 0.1.2-demo abre em paisagem como **BeatFlow Demo · Cordas**. Em **Play**, selecione **BeatFlow Demo** e escolha **Easy**, **Medium**, **Hard** ou **Expert**. Toque em **START** para começar.
+
+As notas percorrem as cinco cordas da esquerda para a direita. Toque diretamente na corda quando a nota cruzar o marcador à direita. Para uma nota longa, mantenha o dedo na corda até a cauda alcançar o marcador. Para um acorde, toque nas cordas correspondentes com dedos diferentes. No teclado, use A, S, D, F e G de cima para baixo. **Retry** volta à tela de início da mesma faixa.
 
 ## Regras de julgamento
 

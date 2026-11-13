@@ -50,10 +50,6 @@ var current_volume_db: float = 0.0
 @onready var debug_label: Label = $HUD/DebugLabel
 @onready var status_label: Label = $HUD/StatusLabel
 @onready var start_btn: Button = $StartRoundButton
-@onready var lane_buttons: Array[Button] = [
-	$Highway/Lane1, $Highway/Lane2, $Highway/Lane3,
-	$Highway/Lane4, $Highway/Lane5,
-]
 
 @onready var countdown_layer: Control = $CountdownLayer
 @onready var countdown_label: Label = $CountdownLayer/CountdownLabel
@@ -96,7 +92,6 @@ func _ready() -> void:
 
 	highway.resized.connect(_recalculate_layout)
 	get_window().focus_exited.connect(_reset_lane_input)
-	_style_lane_buttons()
 	_recalculate_layout()
 	_load_initial_chart()
 
@@ -120,7 +115,7 @@ func _load_initial_chart() -> void:
 		_count_total_events()
 		var diff_str = GameSession.current_difficulty.to_upper()
 		var title_str = song_info.get("title", "Unknown Song")
-		status_label.text = "%s [%s] | Press Space or tap START" % [title_str, diff_str]
+		_show_round_instructions(title_str, diff_str)
 		title_label.text = "%s\n[%s]" % [title_str, diff_str]
 		game_state = "loading"
 		start_btn.show()
@@ -222,11 +217,7 @@ func _input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 
 func _screen_pos_to_lane(pos: Vector2) -> int:
-	for lane in lane_buttons.size():
-		var button := lane_buttons[lane]
-		if button.is_visible_in_tree() and button.get_global_rect().has_point(pos):
-			return lane
-	return -1
+	return highway.lane_at_position(highway.make_canvas_position_local(pos))
 
 func _refresh_lane_input(lane: int) -> void:
 	var held := held_lane_keys[lane] or mouse_lane == lane or lane in touch_to_lane.values()
@@ -241,7 +232,7 @@ func _reset_lane_input() -> void:
 	touch_to_lane.clear()
 	held_lane_keys.fill(false)
 	mouse_lane = -1
-	for lane in lane_buttons.size():
+	for lane in HighwayVisual.LANE_COUNT:
 		_refresh_lane_input(lane)
 
 # ================= ESTADOS =================
@@ -352,9 +343,14 @@ func _on_restart_pressed() -> void:
 	pause_btn.disabled = false
 	$RestartButton.disabled = false
 	if not chart_data.get("notes", []).is_empty():
-		status_label.text = "%s [%s] | Press Space or tap START" % [GameSession.get_current_song().get("title", "Song"), GameSession.current_difficulty.to_upper()]
+		_show_round_instructions(GameSession.get_current_song().get("title", "Song"), GameSession.current_difficulty.to_upper())
 		start_btn.show()
 	_update_hud()
+
+func _show_round_instructions(song_title: String, difficulty: String) -> void:
+	status_label.text = "%s [%s]  •  Tap each string as its note crosses the line." % [song_title, difficulty]
+	if not DisplayServer.is_touchscreen_available():
+		status_label.text += "  A / S / D / F / G from top to bottom."
 
 func _on_audio_finished() -> void:
 	if game_state != "playing": return
@@ -422,7 +418,7 @@ func _spawn_note(note_data: Dictionary) -> void:
 	var t: float = float(note_data["time"])
 	
 	note.setup(t, lane, approach_time, p_type, p_duration)
-	note.set_lane_geometry(highway.get_lane_center(lane), highway.get_hit_y(), highway.get_note_radius())
+	note.set_lane_geometry(highway.get_lane_center(lane), highway.get_strike_x(), highway.get_note_radius())
 
 	note.chord_id = note_data["chord_id"]
 	note.event_end_time = note_data["event_end_time"]
@@ -478,7 +474,6 @@ func _register_miss() -> void:
 
 func _on_lane_down(lane: int) -> void:
 	lane_held[lane] = true
-	lane_buttons[lane].set_pressed_no_signal(true)
 	highway.set_lane_held(lane, true)
 	
 	if game_state != "playing": return
@@ -554,7 +549,6 @@ func _show_hit(judgment: String) -> void:
 
 func _on_lane_up(lane: int) -> void:
 	lane_held[lane] = false
-	lane_buttons[lane].set_pressed_no_signal(false)
 	highway.set_lane_held(lane, false)
 	if game_state != "playing":
 		return
@@ -663,36 +657,12 @@ func _update_hud() -> void:
 		"Offset: %s" % (last_hit_offset if not last_hit_offset.is_empty() else "--")
 	)
 
-func _style_lane_buttons() -> void:
-	for lane in lane_buttons.size():
-		var button := lane_buttons[lane]
-		var color := HighwayVisual.NOTE_COLORS[lane]
-		var normal := StyleBoxFlat.new()
-		normal.bg_color = Color(0.055, 0.065, 0.09).lerp(color, 0.18)
-		normal.border_color = color
-		normal.set_border_width_all(2)
-		normal.border_width_top = 5
-		normal.set_corner_radius_all(10)
-		var pressed := normal.duplicate() as StyleBoxFlat
-		pressed.bg_color = color
-		for state in ["normal", "hover"]:
-			button.add_theme_stylebox_override(state, normal)
-		for state in ["pressed", "hover_pressed"]:
-			button.add_theme_stylebox_override(state, pressed)
-		button.add_theme_color_override("font_color", Color.WHITE)
-		button.add_theme_color_override("font_hover_color", Color.WHITE)
-		button.add_theme_color_override("font_pressed_color", Color(0.015, 0.02, 0.03))
-
 func _recalculate_layout() -> void:
-	if highway.size.x <= HighwayVisual.PAD_GAP * HighwayVisual.LANE_COUNT or highway.get_hit_y() <= 0.0:
+	if highway.size.x <= 0.0 or highway.size.y <= 0.0:
 		return
-	for lane in lane_buttons.size():
-		var pad_rect := highway.get_pad_rect(lane)
-		lane_buttons[lane].position = pad_rect.position
-		lane_buttons[lane].size = pad_rect.size
 	highway.queue_redraw()
 
 	for note in active_notes:
 		if is_instance_valid(note):
-			note.set_lane_geometry(highway.get_lane_center(note.lane), highway.get_hit_y(), highway.get_note_radius())
+			note.set_lane_geometry(highway.get_lane_center(note.lane), highway.get_strike_x(), highway.get_note_radius())
 			note.update_visual(song_position)

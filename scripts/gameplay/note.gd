@@ -5,7 +5,7 @@ var target_time: float = 0.0
 var lane: int = 0
 var approach_time: float = 2.0
 var lane_center: float = 0.0
-var hit_y: float = 0.0
+var strike_x: float = 0.0
 var note_radius: float = 16.0
 var current_song_time: float = 0.0
 
@@ -36,27 +36,27 @@ func setup(
 	end_time = target_time + duration
 	note_color = HighwayVisual.NOTE_COLORS[lane]
 
-func set_lane_geometry(center_x: float, receptor_y: float, radius: float) -> void:
-	lane_center = center_x
-	hit_y = receptor_y
+func set_lane_geometry(center_y: float, receptor_x: float, radius: float) -> void:
+	lane_center = center_y
+	strike_x = receptor_x
 	note_radius = radius
 	size = Vector2.ONE * (note_radius * 4.0)
 
 func update_visual(song_time: float) -> void:
 	current_song_time = song_time
-	var head_y := hit_y if state == "holding" else _note_y(target_time)
-	position = Vector2(lane_center, head_y) - size * 0.5
+	var head_x := strike_x if state == "holding" else _note_x(target_time)
+	position = Vector2(head_x, lane_center) - size * 0.5
 	queue_redraw()
 
-func _note_y(time: float) -> float:
+func _note_x(time: float) -> float:
 	var progress := 1.0 - (time - current_song_time) / approach_time
-	return lerpf(-note_radius, hit_y, clampf(progress, 0.0, 1.0))
+	return lerpf(-note_radius, strike_x, maxf(0.0, progress))
 
 func _draw() -> void:
 	var center := size * 0.5
 	if note_type == "hold":
-		var tail_y := _note_y(end_time) - position.y
-		var tail := Vector2(center.x, tail_y)
+		var tail_x := minf(_note_x(end_time), strike_x) - position.x
+		var tail := Vector2(tail_x, center.y)
 		var tail_color := Color(note_color, 0.85 if state == "holding" else 0.52)
 		var width := note_radius * 0.7
 		draw_line(center, tail, tail_color, width, true)
