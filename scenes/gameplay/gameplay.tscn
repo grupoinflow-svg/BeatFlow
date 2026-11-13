@@ -26,15 +26,18 @@ mouse_filter = 2
 [node name="Highway" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.15
-anchor_right = 1.0
-anchor_bottom = 0.85
+anchor_left = 0.13
+anchor_right = 0.87
+anchor_bottom = 1.0
+offset_top = 106.0
+offset_bottom = -144.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("3_highway")
 
 [node name="NotesContainer" type="Control" parent="Highway"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,6 +45,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Lane1" type="Button" parent="Highway"]
+layout_mode = 0
+focus_mode = 0
+mouse_filter = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 26
+text = "A"
+
+[node name="Lane2" type="Button" parent="Highway"]
+layout_mode = 0
+focus_mode = 0
+mouse_filter = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 26
+text = "S"
+
+[node name="Lane3" type="Button" parent="Highway"]
+layout_mode = 0
+focus_mode = 0
+mouse_filter = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 26
+text = "D"
+
+[node name="Lane4" type="Button" parent="Highway"]
+layout_mode = 0
+focus_mode = 0
+mouse_filter = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 26
+text = "F"
+
+[node name="Lane5" type="Button" parent="Highway"]
+layout_mode = 0
+focus_mode = 0
+mouse_filter = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 26
+text = "G"
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 1
@@ -59,7 +102,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -300.0
 offset_top = 20.0
-offset_right = -30.0
+offset_right = -122.0
 offset_bottom = 60.0
 grow_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -75,7 +118,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -300.0
 offset_top = 65.0
-offset_right = -30.0
+offset_right = -122.0
 offset_bottom = 100.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
@@ -87,13 +130,13 @@ horizontal_alignment = 2
 
 [node name="CenterFeedback" type="Control" parent="HUD"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.0
 grow_horizontal = 2
-grow_vertical = 2
+mouse_filter = 2
 
 [node name="ComboLabel" type="Label" parent="HUD/CenterFeedback"]
 layout_mode = 1
@@ -103,15 +146,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -60.0
+offset_top = 56.0
 offset_right = 150.0
-offset_bottom = 20.0
+offset_bottom = 88.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(150, 40)
+pivot_offset = Vector2(150, 19)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 22
 text = ""
 horizontal_alignment = 1
 
@@ -123,15 +166,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -140.0
+offset_top = 9.0
 offset_right = 200.0
-offset_bottom = -60.0
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(200, 40)
+pivot_offset = Vector2(200, 25)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 34
 text = ""
 horizontal_alignment = 1
 
@@ -163,68 +206,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 14
 text = "Loading..."
 horizontal_alignment = 1
-
-[node name="TouchControls" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_left = 0.15
-anchor_right = 0.85
-anchor_bottom = 1.0
-offset_top = -118.0
-offset_bottom = -42.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 6
-
-[node name="Lane1" type="Button" parent="TouchControls"]
-custom_minimum_size = Vector2(60, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-mouse_filter = 2
-toggle_mode = true
-theme_override_font_sizes/font_size = 20
-text = "A"
-
-[node name="Lane2" type="Button" parent="TouchControls"]
-custom_minimum_size = Vector2(60, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-mouse_filter = 2
-toggle_mode = true
-theme_override_font_sizes/font_size = 20
-text = "S"
-
-[node name="Lane3" type="Button" parent="TouchControls"]
-custom_minimum_size = Vector2(60, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-mouse_filter = 2
-toggle_mode = true
-theme_override_font_sizes/font_size = 20
-text = "D"
-
-[node name="Lane4" type="Button" parent="TouchControls"]
-custom_minimum_size = Vector2(60, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-mouse_filter = 2
-toggle_mode = true
-theme_override_font_sizes/font_size = 20
-text = "F"
-
-[node name="Lane5" type="Button" parent="TouchControls"]
-custom_minimum_size = Vector2(60, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-mouse_filter = 2
-toggle_mode = true
-theme_override_font_sizes/font_size = 20
-text = "G"
 
 [node name="StartRoundButton" type="Button" parent="."]
 visible = false
