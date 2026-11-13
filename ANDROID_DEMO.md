@@ -1,6 +1,14 @@
 # BeatFlow Demo para Android
 
-O APK de depuração da versão 0.1.4-demo abre em paisagem como **BeatFlow Demo · Roda**.
+O APK de depuração da versão 0.1.5-demo abre em paisagem como **BeatFlow Demo · Atabaque** e pode ser instalado ao lado da Demo Roda.
+
+## Atabaque
+
+Abra **ATABAQUE**. Toque no centro para ouvir o som grave e na borda para ouvir o som agudo. No computador, clique nessas áreas ou use **J** para o centro e **K** para a borda.
+
+Em **Ouvir as batidas**, o tambor demonstra duas batidas e ilumina a parte que produz cada som. Quando aparecer **Sua vez**, toque na área destacada. A resposta é livre, sem cronômetro nem pontuação. Se quiser repetir a demonstração, toque em **Ouvir de novo**. A segunda rodada inverte a ordem dos toques.
+
+Os dois sons de percussão foram sintetizados para esta demo.
 
 ## Roda de violão
 

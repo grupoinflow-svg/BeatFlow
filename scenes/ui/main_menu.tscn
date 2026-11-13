@@ -55,7 +55,14 @@ offset_right = 150.0
 offset_bottom = 232.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 14
+
+[node name="DrumButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.59, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 29
+text = "ATABAQUE"
 
 [node name="RodaButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 68)
