@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="Script" path="res://scripts/gameplay/note.gd" id="1_note"]
-
-[node name="Note" type="Control"]
-offset_right = 54.0
-offset_bottom = 54.0
-mouse_filter = 2
-script = ExtResource("1_note")
