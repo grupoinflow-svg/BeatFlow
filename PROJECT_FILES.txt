@@ -1,0 +1,10 @@
+README.md
+assets/audio/demo_clicktrack.wav
+data/charts/demo_easy.json
+project.godot
+scenes/gameplay/gameplay.tscn
+scenes/gameplay/note.tscn
+scripts/gameplay/chart_manager.gd
+scripts/gameplay/gameplay.gd
+scripts/gameplay/note.gd
+scripts/gameplay/score_manager.gd

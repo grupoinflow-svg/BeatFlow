@@ -1,0 +1,14 @@
+{
+  "song_id": "hold_test",
+  "difficulty": "normal",
+  "approach_time": 2.0,
+  "notes": [
+    {"time": 2.0, "lane": 0, "type": "tap"},
+    {"time": 3.0, "lane": 1, "type": "tap"},
+    {"time": 4.0, "lane": 2, "type": "hold", "duration": 1.0},
+    {"time": 6.0, "lane": 3, "type": "tap"},
+    {"time": 7.0, "lane": 4, "type": "hold", "duration": 2.0},
+    {"time": 10.0, "lane": 0, "type": "hold", "duration": 3.0},
+    {"time": 14.0, "lane": 2, "type": "tap"}
+  ]
+}

@@ -1,0 +1,456 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/gameplay/gameplay.gd" id="1_gameplay"]
+[ext_resource type="AudioStream" path="res://assets/audio/demo_clicktrack.wav" id="2_audio"]
+[ext_resource type="Script" path="res://scripts/gameplay/highway.gd" id="3_highway"]
+
+[node name="Gameplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gameplay")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.015, 0.015, 0.02, 1)
+mouse_filter = 2
+
+[node name="Highway" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_highway")
+
+[node name="NotesContainer" type="Control" parent="Highway"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 20.0
+offset_right = -30.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "000000"
+horizontal_alignment = 2
+
+[node name="MultiplierLabel" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 65.0
+offset_right = -30.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "x1"
+horizontal_alignment = 2
+
+[node name="CenterFeedback" type="Control" parent="HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ComboLabel" type="Label" parent="HUD/CenterFeedback"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -60.0
+offset_right = 150.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 40)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 38
+text = ""
+horizontal_alignment = 1
+
+[node name="JudgmentLabel" type="Label" parent="HUD/CenterFeedback"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -140.0
+offset_right = 200.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 40)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = ""
+horizontal_alignment = 1
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -150.0
+offset_right = 215.0
+offset_bottom = -15.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.6)
+theme_override_font_sizes/font_size = 12
+text = "Debug"
+
+[node name="StatusLabel" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -34.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 14
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="TouchControls" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_left = 0.15
+anchor_right = 0.85
+anchor_bottom = 1.0
+offset_top = -118.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 6
+
+[node name="Lane1" type="Button" parent="TouchControls"]
+custom_minimum_size = Vector2(60, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 20
+text = "A"
+
+[node name="Lane2" type="Button" parent="TouchControls"]
+custom_minimum_size = Vector2(60, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 20
+text = "S"
+
+[node name="Lane3" type="Button" parent="TouchControls"]
+custom_minimum_size = Vector2(60, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 20
+text = "D"
+
+[node name="Lane4" type="Button" parent="TouchControls"]
+custom_minimum_size = Vector2(60, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 20
+text = "F"
+
+[node name="Lane5" type="Button" parent="TouchControls"]
+custom_minimum_size = Vector2(60, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 20
+text = "G"
+
+[node name="StartRoundButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -32.0
+offset_right = 112.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "START"
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 128.0
+offset_bottom = 62.0
+text = "RESTART"
+
+[node name="PauseButton" type="Button" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 60.0
+grow_horizontal = 0
+text = "PAUSE"
+
+[node name="CountdownLayer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="CountdownLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="CountdownLabel" type="Label" parent="CountdownLayer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 100
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseLayer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="PauseLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="PauseLabel" type="Label" parent="PauseLayer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 80.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseLayer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ResumeButton" type="Button" parent="PauseLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "RESUME"
+
+[node name="RestartButton" type="Button" parent="PauseLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="PauseLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "QUIT"
+
+[node name="ResultsLayer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="ResultsLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.04, 0.06, 0.95)
+
+[node name="TitleLabel" type="Label" parent="ResultsLayer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 40.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.85, 0.75, 0.3, 1)
+theme_override_font_sizes/font_size = 42
+text = "SONG COMPLETE"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="ResultsLayer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -120.0
+offset_right = 250.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Score: 0
+Accuracy: 100.00%
+Rank: S
+Max Combo: 0
+
+Perfect: 0
+Good: 0
+Miss: 0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResultsLayer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="RetryButton" type="Button" parent="ResultsLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+text = "RETRY"
+
+[node name="SongSelectButton" type="Button" parent="ResultsLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+text = "SONG SELECT"
+
+[node name="MainMenuButton" type="Button" parent="ResultsLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_audio")
+
+
