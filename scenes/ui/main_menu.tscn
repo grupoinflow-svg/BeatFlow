@@ -63,12 +63,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "PLAY"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="GuitarButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-disabled = true
-text = "SETTINGS (SOON)"
+text = "TESTAR VIOLÃO"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)

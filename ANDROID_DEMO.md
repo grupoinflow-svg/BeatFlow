@@ -1,6 +1,16 @@
 # BeatFlow Demo para Android
 
-O APK de depuração da versão 0.1.2-demo abre em paisagem como **BeatFlow Demo · Cordas**. Em **Play**, selecione **BeatFlow Demo** e escolha **Easy**, **Medium**, **Hard** ou **Expert**. Toque em **START** para começar.
+O APK de depuração da versão 0.1.3-demo abre em paisagem como **BeatFlow Demo · Violão**.
+
+## Testar violão
+
+No menu, toque em **TESTAR VIOLÃO**. Explore as cordas Sol, Si e Mi agudo, da corda solta à 3ª casa. Cada posição toca a altura correspondente à afinação padrão. O timbre de corda dedilhada e o pulso foram sintetizados para esta demo. A amostra de cada corda é transposta um semitom a cada casa.
+
+Toque em **INICIAR** para tocar uma melodia de 24 notas a 90 BPM. Depois da contagem de quatro batidas, toque na posição iluminada quando o anel fechar. A rodada usa um pulso de referência e a melodia é produzida pelos toques. No fim, confira os acertos e a precisão ou toque em **REPETIR**.
+
+## Demo anterior
+
+Em **PLAY**, selecione **BeatFlow Demo** e escolha **Easy**, **Medium**, **Hard** ou **Expert**. Toque em **START** para começar.
 
 As notas percorrem as cinco cordas da esquerda para a direita. Toque diretamente na corda quando a nota cruzar o marcador à direita. Para uma nota longa, mantenha o dedo na corda até a cauda alcançar o marcador. Para um acorde, toque nas cordas correspondentes com dedos diferentes. No teclado, use A, S, D, F e G de cima para baixo. **Retry** volta à tela de início da mesma faixa.
 
