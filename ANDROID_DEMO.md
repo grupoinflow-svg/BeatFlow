@@ -1,14 +1,14 @@
 # BeatFlow Demo para Android
 
-O APK de depuração da versão 0.1.5-demo abre em paisagem como **BeatFlow Demo · Atabaque** e pode ser instalado ao lado da Demo Roda.
+O APK de depuração da versão 0.1.6-demo abre em paisagem como **BeatFlow Demo · Tambores** e pode ser instalado ao lado das demos anteriores.
 
-## Atabaque
+## Tambores
 
-Abra **ATABAQUE**. Toque no centro para ouvir o som grave e na borda para ouvir o som agudo. No computador, clique nessas áreas ou use **J** para o centro e **K** para a borda.
+Abra **TAMBORES**, experimente os três timbres e toque em **Tocar faixa**. Após quatro tempos de contagem, toque no tambor quando o aro alcançar a marca. No computador, clique no tambor ou use **A**, **S** e **D** da esquerda para a direita.
 
-Em **Ouvir as batidas**, o tambor demonstra duas batidas e ilumina a parte que produz cada som. Quando aparecer **Sua vez**, toque na área destacada. A resposta é livre, sem cronômetro nem pontuação. Se quiser repetir a demonstração, toque em **Ouvir de novo**. A segunda rodada inverte a ordem dos toques.
+**Pulso da Roda** é uma faixa original de 54 segundos, com 20 compassos a 96 BPM. O baixo, os acordes e a melodia formam o acompanhamento sintetizado. Os toques no tempo produzem a percussão, incluindo batidas simultâneas na segunda metade. A faixa continua se você perder uma nota. Ao final, confira quantas batidas acertou, sua precisão e sua maior sequência.
 
-Os dois sons de percussão foram sintetizados para esta demo.
+Perfect até ±80 ms e Good até ±150 ms. Cada toque em uma batida do mapa conta individualmente, inclusive em batidas simultâneas. Os sons de percussão foram sintetizados para as demos de atabaque e tambores.
 
 ## Roda de violão
 
